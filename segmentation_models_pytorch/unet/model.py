@@ -5,8 +5,6 @@ from ..base import SegmentationModel
 from ..base import SegmentationHead, ClassificationHead
 
 
-UI=1
-
 class Unet(SegmentationModel):
     """Unet_ is a fully convolution neural network for image semantic segmentation
 
