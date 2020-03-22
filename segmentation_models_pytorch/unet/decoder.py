@@ -72,6 +72,7 @@ class UnetDecoder(nn.Module):
             use_batchnorm=True,
             attention_type=None,
             center=False,
+            red_size=0,
     ):
         super().__init__()
 
@@ -118,5 +119,5 @@ class UnetDecoder(nn.Module):
         for i, decoder_block in enumerate(self.blocks):
             skip = skips[i] if i < len(skips) else None
             x = decoder_block(x, skip)
-
+    
         return x

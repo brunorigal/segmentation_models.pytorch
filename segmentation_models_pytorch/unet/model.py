@@ -45,6 +45,7 @@ class Unet(SegmentationModel):
         self,
         encoder_name: str = "resnet34",
         encoder_depth: int = 5,
+        decoder_depth: int =5,
         encoder_weights: str = "imagenet",
         decoder_use_batchnorm: bool = True,
         decoder_channels: List[int] = (256, 128, 64, 32, 16),
@@ -66,7 +67,7 @@ class Unet(SegmentationModel):
         self.decoder = UnetDecoder(
             encoder_channels=self.encoder.out_channels,
             decoder_channels=decoder_channels,
-            n_blocks=encoder_depth,
+            n_blocks=decoder_depth,
             use_batchnorm=decoder_use_batchnorm,
             center=True if encoder_name.startswith("vgg") else False,
             attention_type=decoder_attention_type,
